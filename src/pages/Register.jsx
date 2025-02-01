@@ -9,6 +9,7 @@ import { Box, Button, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
+import * as Yup from 'yup';
 
 const Register = () => {
   return (
