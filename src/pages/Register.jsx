@@ -5,9 +5,10 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
+import { Formik } from "formik";
 
 const Register = () => {
   return (
@@ -44,12 +45,111 @@ const Register = () => {
             Register
           </Typography>
 
-          <Box sx={{ textAlign: "center", mt: 2, color:"secondary.main" }}>
+          {/* /* -------------------------------------------------------------------------- */}
+          {/* FORMİK YAPISI */}
+          <Formik
+            initialValues={{
+              username: "",
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+            }}
+            validate={{}}
+            onSubmit={{}}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+            }) => (
+              <form action="">
+                <TextField
+                  name="username"
+                  label="Username"
+                  variant="outlined"
+                  fullWidth
+                  value={values.username}
+                  onChange={handleChange}
+                  error={touched.username && errors.username}
+                  helperText={touched.username && errors.username} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+                  // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+                  onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+                  margin="normal"
+                />
+                <TextField
+                  name="firstName"
+                  label="First Name"
+                  variant="outlined"
+                  fullWidth
+                  value={values.firstName}
+                  onChange={handleChange}
+                  error={touched.firstName && errors.firstName}
+                  helperText={touched.firstName && errors.firstName} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+                  // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+                  onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+                  margin="normal"
+                />
+                <TextField
+                  name="lastName"
+                  label="Last Name"
+                  variant="outlined"
+                  fullWidth
+                  value={values.lastName}
+                  onChange={handleChange}
+                  error={touched.lastName && errors.lastName}
+                  helperText={touched.lastName && errors.lastName} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+                  // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+                  onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+                  margin="normal"
+                />
+                   <TextField
+                  name="email"
+                  label="EMail"
+                  variant="outlined"
+                  fullWidth
+                  value={values.email}
+                  onChange={handleChange}
+                  error={touched.email && errors.email}
+                  helperText={touched.email && errors.email} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+                  // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+                  onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+                  margin="normal"
+                  type="email"
+                />
+                   <TextField
+                  name="password"
+                  label="Password"
+                  variant="outlined"
+                  fullWidth
+                  value={values.password}
+                  onChange={handleChange}
+                  error={touched.password && errors.password}
+                  helperText={touched.password && errors.password} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+                  // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+                  onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+                  margin="normal"
+                  type="password"
+                />
+                 <Button variant="contained" fullWidth type="submit">
+                  Contained
+                </Button>
+              </form>
+            )}
+          </Formik>
+
+          {/* /* -------------------------------------------------------------------------- */}
+
+          <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
           </Box>
         </Grid>
 
-    <AuthImage image={image} />
+        <AuthImage image={image} />
       </Grid>
     </Container>
   );
