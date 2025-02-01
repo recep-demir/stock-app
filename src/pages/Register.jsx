@@ -5,12 +5,35 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 const Register = () => {
+  const SignupSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(5, "Kullanıcı adı 5 karakterden küçük olamaz")
+      .max(50, "Too Long!")
+      .required("Required"),
+    firstName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    lastName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Bu alan zorunludur"),
+    password: Yup.string()
+      .min(8, "Password 8 kararkterden az olamaz")
+      .matches(/[a-z]/, "Şifre küçük harf içermelidir")
+      .matches(/[A-Z]/, "Şifre büyük harf içermelidir")
+      .matches(/\d+/, "Şifre sayısal karakter içermelidir.")
+      .matches(/[@$?!%&*]+/, "Özel karakter içermelidir(@$?!%&*)"),
+  });
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -55,7 +78,7 @@ const Register = () => {
               email: "",
               password: "",
             }}
-            validate={{}}
+            validationSchema={SignupSchema}
             onSubmit={{}}
           >
             {({
@@ -67,7 +90,7 @@ const Register = () => {
               handleSubmit,
               isSubmitting,
             }) => (
-              <form action="">
+              <form onSubmit={handleSubmit}>
                 <TextField
                   name="username"
                   label="Username"
@@ -107,7 +130,7 @@ const Register = () => {
                   onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
                   margin="normal"
                 />
-                   <TextField
+                <TextField
                   name="email"
                   label="EMail"
                   variant="outlined"
@@ -121,7 +144,7 @@ const Register = () => {
                   margin="normal"
                   type="email"
                 />
-                   <TextField
+                <TextField
                   name="password"
                   label="Password"
                   variant="outlined"
@@ -135,6 +158,9 @@ const Register = () => {
                   margin="normal"
                   type="password"
                 />
+                <Button variant="contained" fullWidth type="submit">
+                  SUBMIT
+                </Button>
               </form>
             )}
           </Formik>
