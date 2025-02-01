@@ -5,11 +5,10 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
-import * as Yup from 'yup';
 
 const Register = () => {
   return (
@@ -136,9 +135,6 @@ const Register = () => {
                   margin="normal"
                   type="password"
                 />
-                 <Button variant="contained" fullWidth type="submit">
-                  Contained
-                </Button>
               </form>
             )}
           </Formik>
