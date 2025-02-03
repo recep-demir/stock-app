@@ -18,11 +18,16 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
+    registerSuccess:(state,{payload})=>{
+      console.log("Baklava güzelmiş")
+      console.log(payload)
+
+    }
   },
 });
 
 export const {
   fetchStart,
-  fetchFail,
+  fetchFail,registerSuccess
 } = authSlice.actions;
 export default authSlice.reducer;
