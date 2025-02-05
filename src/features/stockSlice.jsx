@@ -21,6 +21,8 @@ const stockSlice=createSlice({
           firmSuccess:(state,{payload})=>{
             console.log("Payload",payload)
             state.firms=payload.data
+            state.loading=false;
+            state.error=false;
           }
     }
 })
