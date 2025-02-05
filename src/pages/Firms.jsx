@@ -1,10 +1,14 @@
 import React from 'react'
 import { useEffect } from 'react'
+import useStockCall from '../hook/useStockCall'
 
 const Firms = () => {
-    useEffect = ()=>{}
-  
 
+  const {getFirms}=useStockCall()
+  
+  useEffect(()=>{
+  getFirms()
+  },[])
 
 
 

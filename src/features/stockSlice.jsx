@@ -17,10 +17,14 @@ const stockSlice=createSlice({
           fetchFail: (state) => {
             state.loading = false;
             state.error = true;
+          },
+          firmSuccess:(state,{payload})=>{
+            console.log("Payload",payload)
+            state.firms=payload.data
           }
     }
 })
 
-export const{fetchStart,fetchFail}=stockSlice.actions;
+export const{fetchStart,fetchFail,firmSuccess}=stockSlice.actions;
 
 export default stockSlice.reducer;
