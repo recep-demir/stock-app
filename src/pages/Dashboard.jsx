@@ -1,34 +1,3 @@
-// import React from "react";
-// import AppBar from "@mui/material/AppBar";
-// import Box from "@mui/material/Box";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import Toolbar from "@mui/material/Toolbar";
-// import Button from "@mui/material/Button";
-// import Typography from "@mui/material/Typography";
-// import useAuthCall from "../hook/useAuthCall";
-
-
-// function Dashboard() {
-//   const {logout}=useAuthCall()
-
-//   return (
-//     <Box sx={{ display: "flex" }}>
-//       <CssBaseline />
-//       <AppBar position="fixed">
-//         <Toolbar>
-//           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-//             STOCK APP
-//           </Typography>
-//           <Button color="inherit" onClick={logout} >Logout</Button>
-//         </Toolbar>
-//       </AppBar>
-//     </Box>
-//   );
-// }
-
-// export default Dashboard;
-
-
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -50,6 +19,8 @@ import { Button } from '@mui/material';
 import useAuthCall from "../hook/useAuthCall";
 import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 const drawerWidth = 240;
 
@@ -132,6 +103,9 @@ const links=[
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+           backgroundColor:"white",
+           color:"secondary.main",
+           borderRadius:"10px"
         }}
       >
         <Toolbar  sx={{display:"flex", justifyContent:"space-between"}} >
@@ -147,7 +121,13 @@ const links=[
           <Typography variant="h6" noWrap component="div">
            Stock App
           </Typography>
-          <Button color="inherit" onClick={logout} >Logout</Button>
+          <Button color="inherit" onClick={logout}
+          sx={{"&:hover":{
+            backgroundColor:"secondary.second",
+            color:"white", "& .MuiSvgIcon-root":{ color:"red"}
+          }}} >Logout
+          <LogoutIcon />
+          </Button>
         </Toolbar>
         
       </AppBar>

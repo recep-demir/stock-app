@@ -27,7 +27,7 @@ const useAuthCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        "https://10003.fullstack.clarusway.com/users/",
+        "https://17130.fullstack.clarusway.com/users/",
         userInfo
       );
       console.log(data);
@@ -44,7 +44,7 @@ const useAuthCall = () => {
 
     try {
       const { data } = await axios(
-        "https://10003.fullstack.clarusway.com/auth/logout",
+        "https://17130.fullstack.clarusway.com/auth/logout",
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -62,7 +62,7 @@ const useAuthCall = () => {
     dispatch(fetchStart())
     try {
       const { data } = await axios.post(
-        "https://10003.fullstack.clarusway.com/auth/login",
+        "https://17130.fullstack.clarusway.com/auth/login",
         userInfo
       );
       console.log("Loginde data",data)
