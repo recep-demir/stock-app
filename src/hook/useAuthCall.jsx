@@ -23,11 +23,16 @@ const useAuthCall = () => {
 
   const { token } = useSelector((state) => state.auth);
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+
+
+
   const register = async (userInfo) => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        "https://17130.fullstack.clarusway.com/users/",
+        `${BASE_URL}users/`,
         userInfo
       );
       console.log(data);
@@ -44,7 +49,7 @@ const useAuthCall = () => {
 
     try {
       const { data } = await axios(
-        "https://17130.fullstack.clarusway.com/auth/logout",
+        `${BASE_URL}auth/logout/`,
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -62,7 +67,7 @@ const useAuthCall = () => {
     dispatch(fetchStart())
     try {
       const { data } = await axios.post(
-        "https://17130.fullstack.clarusway.com/auth/login",
+        `${BASE_URL}auth/logIN/`,
         userInfo
       );
       console.log("Loginde data",data)
