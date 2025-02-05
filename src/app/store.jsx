@@ -3,6 +3,7 @@ import authReducer from "../features/authSlice";
 // import { createStore } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import stockReducer from "../features/stockSlice";
 
 
 
@@ -17,6 +18,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
   reducer: {
     auth: persistedReducer,
+    stock: stockReducer
   },
   devTools: process.env.NODE_ENV !== "production",
 });

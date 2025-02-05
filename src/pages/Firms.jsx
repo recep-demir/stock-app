@@ -1,7 +1,13 @@
 import React from 'react'
+import { useEffect } from 'react'
 
 const Firms = () => {
-    console.log("firmiçindeyim")
+    useEffect = ()=>{}
+  
+
+
+
+
   return (
     <div>Firms</div>
   )
