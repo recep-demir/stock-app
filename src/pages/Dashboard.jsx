@@ -76,7 +76,7 @@ function ResponsiveDrawer(props) {
              sx={{
               color:"secondary.main",
               borderRadius:"1rem",
-              transition:"all 0.7s ease-in-out ",
+              transition:"all 0.3s ease-in-out ",
               "&:hover":{
                 backgroundColor:"secondary.second",
                 color:"white"
