@@ -11,7 +11,7 @@ const RegisterCall = () => {
 
     try {
       const { data } = await axios.post(
-        "https://17130.fullstack.clarusway.com/users/",
+        "https://10003.fullstack.clarusway.com/users/",
         userInfo
       );
     } catch (error) {

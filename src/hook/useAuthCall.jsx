@@ -18,21 +18,16 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const useAuthCall = () => {
-/* -------------------------------------------------------------------------- */
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { token } = useSelector((state) => state.auth);
 
-  const BASE_URL=import.meta.env.VITE_BASE_URL
-
-  /* -------------------------------------------------------------------------- */
-  /*                              REGİSTER  İŞLEMİ                              */
-  /* -------------------------------------------------------------------------- */
   const register = async (userInfo) => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        `${BASE_URL}users/`,
+        "https://10003.fullstack.clarusway.com/users/",
         userInfo
       );
       console.log(data);
@@ -44,15 +39,12 @@ const useAuthCall = () => {
     }
   };
 
-  /* -------------------------------------------------------------------------- */
-  /*                                LOGOUT İŞLEMİ                               */
-  /* -------------------------------------------------------------------------- */
   const logout = async () => {
     dispatch(fetchStart());
 
     try {
       const { data } = await axios(
-        `${BASE_URL}auth/logout`,
+        "https://10003.fullstack.clarusway.com/auth/logout",
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -66,17 +58,14 @@ const useAuthCall = () => {
       dispatch(fetchFail())
     }
   };
-
-  /* -------------------------------------------------------------------------- */
-  /*                                LOGIN İŞLEMİ                               */
-  /* -------------------------------------------------------------------------- */
   const login = async (userInfo) => {
     dispatch(fetchStart())
     try {
       const { data } = await axios.post(
-        `${BASE_URL}auth/login`,
+        "https://10003.fullstack.clarusway.com/auth/login",
         userInfo
       );
+      console.log("Loginde data",data)
       dispatch(loginSuccess(data))
       navigate("/stock")
     } catch (error) {
