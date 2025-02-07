@@ -16,18 +16,25 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useAxios from "./useAxios";
 
 const useAuthCall = () => {
+/* -------------------------------------------------------------------------- */
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { token } = useSelector((state) => state.auth);
+  const {axiosWithToken}=useAxios()
 
+  const BASE_URL=import.meta.env.VITE_BASE_URL
+
+  /* -------------------------------------------------------------------------- */
+  /*                              REGİSTER  İŞLEMİ                              */
+  /* -------------------------------------------------------------------------- */
   const register = async (userInfo) => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        "https://10003.fullstack.clarusway.com/users/",
+        `${BASE_URL}users/`,
         userInfo
       );
       console.log(data);
@@ -39,18 +46,15 @@ const useAuthCall = () => {
     }
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                                LOGOUT İŞLEMİ                               */
+  /* -------------------------------------------------------------------------- */
   const logout = async () => {
     dispatch(fetchStart());
 
     try {
-      const { data } = await axios(
-        "https://10003.fullstack.clarusway.com/auth/logout",
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
+      await axiosWithToken.get("auth/logout/")
+
 
       navigate("/");
       dispatch(logoutSuccess())
@@ -58,14 +62,17 @@ const useAuthCall = () => {
       dispatch(fetchFail())
     }
   };
+
+  /* -------------------------------------------------------------------------- */
+  /*                                LOGIN İŞLEMİ                               */
+  /* -------------------------------------------------------------------------- */
   const login = async (userInfo) => {
     dispatch(fetchStart())
     try {
       const { data } = await axios.post(
-        "https://10003.fullstack.clarusway.com/auth/login",
+        `${BASE_URL}auth/login`,
         userInfo
       );
-      console.log("Loginde data",data)
       dispatch(loginSuccess(data))
       navigate("/stock")
     } catch (error) {

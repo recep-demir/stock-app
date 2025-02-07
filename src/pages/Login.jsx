@@ -12,6 +12,7 @@ import { Formik } from "formik";
 import useAuthCall from "../hook/useAuthCall";
 import LoginForm from "../components/LoginForm";
 import * as Yup from "yup";
+
 const Login = () => {
   const { login } = useAuthCall();
 
@@ -56,13 +57,12 @@ const Login = () => {
             validationSchema={SignupSchema}
             onSubmit={(values, actions) => {
               login(values);
-              console.log(values,"loginiçinde")
               actions.resetForm();
               actions.setSubmitting(false);
             }}
-            component={(props) => <LoginForm {...props} />}>
+            component={(props) => <LoginForm {...props} />}/>
               
-            </Formik>
+         
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/register">
               Don't have an account? Sign Up

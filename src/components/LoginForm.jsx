@@ -3,7 +3,6 @@ import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import { Form } from "formik"
 import { useSelector } from "react-redux"
-import { object, string } from "yup"; //! bu şekilde de direk olarak metodları alıp yine validasyon şemamızı oluşturabiliriz. 
 
 
 

@@ -30,6 +30,8 @@ const useStockCall = () => {
 
   // }
 
+  // AxioswithTken yardımıyla veri çekme
+
   const getFirms = async () => {
     dispatch(fetchStart());
     try {
