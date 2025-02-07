@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, firmSuccess } from "../features/stockSlice";
+import { fetchFail, fetchStart, firmSuccess, stockSuccess } from "../features/stockSlice";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import useAxios from "./useAxios";
@@ -32,19 +32,58 @@ const useStockCall = () => {
 
   // AxioswithTken yardımıyla veri çekme
 
-  const getFirms = async () => {
-    dispatch(fetchStart());
+  // const getFirms = async () => {
+  //   dispatch(fetchStart());
+  //   try {
+  //     const { data } = await axiosWithToken.get("firms")
+  //       dispatch(firmSuccess(data));
+  //   } catch (error) {
+  //     dispatch(fetchFail());
+  //   }
+  // };
+  // const getBrands= async () => {
+  //   dispatch(fetchStart());
+  //   try {
+  //     const { data } = await axiosWithToken.get("brands")
+  //       dispatch(firmSuccess(data));
+  //   } catch (error) {
+  //     dispatch(fetchFail());
+  //   }
+  // };
+
+/* -------------------------------------------------------------------------- */
+/*                                  GET DATA                                  */
+/* -------------------------------------------------------------------------- */
+const getStockData=async(url)=>{
+  dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.get("firms")
-       
-      console.log(data);
-      dispatch(firmSuccess(data));
+      const { data } = await axiosWithToken.get(`${url}`)
+        dispatch(stockSuccess({data,url}));
     } catch (error) {
       dispatch(fetchFail());
     }
-  };
+}
+/* -------------------------------------------------------------------------- */
+/*                                 DELETE DATA                                */
+/* -------------------------------------------------------------------------- */
+const deleteStockData=async(url,id)=>{
+  dispatch(fetchStart());
+  try {
+    const { data } = await axiosWithToken.delete(`${url}/${id}`)
+    
+    console.log(data)
+    getStockData(url)
+  } catch (error) {
+    dispatch(fetchFail());
 
-  return { getFirms };
+  }
+
+
+  
+}
+
+
+  return { getStockData,deleteStockData};
 };
 
 export default useStockCall;

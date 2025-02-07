@@ -1,73 +1,50 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { btnStyle } from "../../styles/globalStyles";
+import useStockCall from "../../hook/useStockCall";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme }) => ({
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-  variants: [
-    {
-      props: ({ expand }) => !expand,
-      style: {
-        transform: "rotate(0deg)",
-      },
-    },
-    {
-      props: ({ expand }) => !!expand,
-      style: {
-        transform: "rotate(180deg)",
-      },
-    },
-  ],
-}));
 
-export default function FirmsCard({ _id, name, phone, address, image }) {
-  const [expanded, setExpanded] = React.useState(false);
+export default function FirmCard({ _id, name, phone, address, image }) {
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
+  const {deleteStockData}=useStockCall()
+  
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader title={name} subheader={address} />
-      <CardMedia component="img" height="194" image={image} alt="Paella dish" />
+    <Card
+      sx={{
+        height: 390,
+        display:"flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "0.5rem",
+      }}
+    >
       <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {name}
+        </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {phone}
+          {address}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        ></ExpandMore>
+      <CardMedia
+        sx={{ height: 140, objectFit: "contain" }}
+        image={image}
+        component="img"
+        title={name}
+      />
+      <CardContent>
+        <Typography variant="body2">Phone: {phone}</Typography>
+      </CardContent>
+
+      <CardActions sx={{ justifyContent: "center", gap: 2 }}>
+        <EditIcon sx={btnStyle} />
+        <DeleteIcon sx={btnStyle}  onClick={()=>deleteStockData("firms",_id)}  />
       </CardActions>
     </Card>
   );
