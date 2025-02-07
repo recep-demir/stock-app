@@ -28,7 +28,7 @@ const {firms}=useSelector(state=>state.stock)
 {firms.map((firm,index)=>(  
   <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
 
-  <FirmsCard key={firm.id} firm={firm}/>
+  <FirmsCard {...firm}/>
 
   </Grid>
   
