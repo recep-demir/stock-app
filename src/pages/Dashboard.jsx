@@ -20,7 +20,7 @@ import useAuthCall from "../hook/useAuthCall";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
-import MenuListItems from './../components/MuiListItems';
+import MenuListItems from "./../components/MuiListItems";
 
 const drawerWidth = 240;
 
@@ -46,61 +46,61 @@ function ResponsiveDrawer(props) {
     }
   };
 
-  const links = [
-    {
-      title: "Dashboard",
-      url: "",
-      icon: "public/assets/navbar/ic_analytics.svg",
-    },
-    { title: "Firms", url: "firms", icon: "public/assets/navbar/firms.svg" },
-    {
-      title: "Products",
-      url: "products",
-      icon: "public/assets/navbar/ic_cart.svg",
-    },
-    {
-      title: "Purchases",
-      url: "purchases",
-      icon: "public/assets/navbar/purchase.svg",
-    },
-    { title: "Sales", url: "sales", icon: "public/assets/navbar/sales.svg" },
-    { title: "Brands", url: "brands", icon: "public/assets/navbar/brand.svg" },
-  ];
+  // const links = [
+  //   {
+  //     title: "Dashboard",
+  //     url: "",
+  //     icon: "public/assets/navbar/ic_analytics.svg",
+  //   },
+  //   { title: "Firms", url: "firms", icon: "public/assets/navbar/firms.svg" },
+  //   {
+  //     title: "Products",
+  //     url: "products",
+  //     icon: "public/assets/navbar/ic_cart.svg",
+  //   },
+  //   {
+  //     title: "Purchases",
+  //     url: "purchases",
+  //     icon: "public/assets/navbar/purchase.svg",
+  //   },
+  //   { title: "Sales", url: "sales", icon: "public/assets/navbar/sales.svg" },
+  //   { title: "Brands", url: "brands", icon: "public/assets/navbar/brand.svg" },
+  // ];
 
-  const drawer = (
-    <div>
-      <Toolbar />
-      <List>
-        {links.map((text, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton onClick={() => navigate(`${text.url}`)}
-             sx={{
-              color:"secondary.main",
-              borderRadius:"1rem",
-              transition:"all 0.7s ease-in-out ",
-              "&:hover":{
-                backgroundColor:"secondary.second",
-                color:"white"
-              }
-             }} 
-              
-              >
-              <Box
-                sx={{
-                  width: 24,
-                  height: 24,
-                  mask:`url(${text.icon}) no-repeat center`,
-                  backgroundColor:"currentColor",
-                  mr: 2,
-                }}
-              ></Box>
-              <ListItemText primary={text.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
+  // const drawer = (
+  //   <div>
+  //     <Toolbar />
+  //     <List>
+  //       {links.map((text, index) => (
+  //         <ListItem key={index} disablePadding>
+  //           <ListItemButton onClick={() => navigate(`${text.url}`)}
+  //            sx={{
+  //             color:"secondary.main",
+  //             borderRadius:"1rem",
+  //             transition:"all 0.7s ease-in-out ",
+  //             "&:hover":{
+  //               backgroundColor:"secondary.second",
+  //               color:"white"
+  //             }
+  //            }}
+
+  //             >
+  //             <Box
+  //               sx={{
+  //                 width: 24,
+  //                 height: 24,
+  //                 mask:`url(${text.icon}) no-repeat center`,
+  //                 backgroundColor:"currentColor",
+  //                 mr: 2,
+  //               }}
+  //             ></Box>
+  //             <ListItemText primary={text.title} />
+  //           </ListItemButton>
+  //         </ListItem>
+  //       ))}
+  //     </List>
+  //   </div>
+  // );
 
   // Remove this const when copying and pasting into your project.
   const container =
@@ -174,7 +174,7 @@ function ResponsiveDrawer(props) {
           }}
         >
           {/* {drawer} */}
-          <MenuListItems/> 
+          <MenuListItems />
         </Drawer>
         <Drawer
           variant="permanent"
@@ -188,8 +188,8 @@ function ResponsiveDrawer(props) {
           open
         >
           {/* {drawer} */}
-          <MenuListItems/>
-                    </Drawer>
+          <MenuListItems />
+        </Drawer>
       </Box>
       <Box
         component="main"

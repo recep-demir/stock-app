@@ -1,19 +1,14 @@
 import React from "react";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import { btnStyle,selectedStyle } from "../styles/globalStyles";
+import { btnStyle, selectedStyle } from "../styles/globalStyles";
+
 
 const icon = (name) => `/assets/navbar/${name}.svg`;
 
@@ -51,30 +46,10 @@ const links = [
   },
 ];
 
-// const btnStyle = {
-//   color: "secondary.main",
-//   borderRadius: "1rem",
-//   transition:"all 0.6s ease-in-out",
-//   "&:hover": {
-//     backgroundColor: "secondary.main",
-//     color: "white",
-//   },
-// }
-// const selectedStyle = {
-//   backgroundColor: "secondary.second",
-//   color: "white",
-//   borderRadius: "1rem",
-//   "&:hover": {
-//     backgroundColor: "secondary.main",
-//     color: "white",
-//   },
-// }
-
 const MenuListItems = () => {
   const navigate = useNavigate();
-  const location = useLocation()
-  // const {pathname} = useLocation()
-  console.log(location)
+  const location = useLocation();
+  // console.log(location);
   return (
     <div>
       <Toolbar />

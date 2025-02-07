@@ -20,6 +20,7 @@ const Firms = () => {
       <Typography variant="h4" color="secondary.second" align="center">
         Firms
       </Typography>
+      FirmModal
       <Button variant="contained">NEW FIRM</Button>
       <Grid container spacing={2} mt={2}>
         {firms.map((firm,index) => (
