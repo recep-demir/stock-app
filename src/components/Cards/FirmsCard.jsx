@@ -10,7 +10,7 @@ import { btnStyle } from "../../styles/globalStyles";
 import useStockCall from "../../hook/useStockCall";
 
 
-export default function FirmCard({ _id, name, phone, address, image }) {
+export default function FirmCard({ _id, name, phone, address, image ,setInitialState ,handleOpen}) {
 
   const {deleteStockData}=useStockCall()
   
@@ -43,7 +43,7 @@ export default function FirmCard({ _id, name, phone, address, image }) {
       </CardContent>
 
       <CardActions sx={{ justifyContent: "center", gap: 2 }}>
-        <EditIcon sx={btnStyle} />
+        <EditIcon sx={btnStyle} onClick={()=>{setInitialState({_id,name,address,phone,image});handleOpen()  }}  />
         <DeleteIcon sx={btnStyle}  onClick={()=>deleteStockData("firms",_id)}  />
       </CardActions>
     </Card>
