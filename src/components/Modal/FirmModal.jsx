@@ -20,28 +20,27 @@ const style = {
 };
 
 export default function FirmModal({ open, handleClose }) {
-    const {createStockData}=useStockCall()
-    const [info,setInfo]=useState({
-        name:"",
-        adress:"",
-        phone:"",
-        image:""
-    })
+  const { createStockData } = useStockCall();
+  const [info, setInfo] = useState({
+    name: "",
+    adress: "",
+    phone: "",
+    image: "",
+  });
 
-    const handleChange=(e)=>{
-        console.log(e.target.name)
-        console.log(e.target.value)
+  const handleChange = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
     //    {[e.target.name]:e.target.value}
-    setInfo({...info,[e.target.name]:e.target.value})
-    }
+    setInfo({ ...info, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit=(e)=>{
-e.preventDefault()
-createStockData("firms",info)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createStockData("firms", info);
+  };
 
-    }
-
-    console.log(info)
+  console.log(info);
   return (
     <div>
       <Modal
@@ -61,7 +60,7 @@ createStockData("firms",info)
               value={info.name}
               required
             />
-             <TextField
+            <TextField
               label="Firm Address"
               name="address"
               id="address"
@@ -91,7 +90,7 @@ createStockData("firms",info)
               onChange={handleChange}
               required
             />
-          <Button type="submit">SUBMIT FIRM</Button>
+            <Button type="submit">SUBMIT FIRM</Button>
           </Box>
         </Box>
       </Modal>
