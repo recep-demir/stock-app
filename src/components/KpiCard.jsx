@@ -11,7 +11,6 @@ function classNames(...classes) {
 
 export default function KpiCard() {
   const { sales, purchases } = useSelector((state) => state.stock);
-  console.log("purchases", purchases);
 
 const totalSales=sales.reduce((acc,sale)=>acc+sale.amount,0)
 const totalPurchases=purchases.reduce((acc,purc)=>acc+purc.amount,0)
