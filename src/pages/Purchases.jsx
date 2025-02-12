@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 
 
 const Purchases = () => {
-  const {getStockData}=useStockCall()
+  const {getStockData,getPurcBrandPro}=useStockCall()
   const { loading, error } = useSelector((state) => state.stock);
 
     const [open, setOpen] = useState(false);
@@ -28,9 +28,10 @@ const Purchases = () => {
     
    
   useEffect(()=>{
-    getStockData("purchases")
-    getStockData("brands")
-    getStockData("products")
+    // getStockData("purchases")
+    // getStockData("brands")
+    // getStockData("products")
+    getPurcBrandPro()
   },[])
 
   return (

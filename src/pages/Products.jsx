@@ -9,7 +9,7 @@ import ProductModal from "../components/Modal/ProductModal";
 import { useSelector } from "react-redux";
 
 const Products = () => {
-  const { getStockData } = useStockCall();
+  const { getStockData ,getProCatBrand} = useStockCall();
   const { loading, error } = useSelector((state) => state.stock);
 
   const [open, setOpen] = useState(false);
@@ -23,9 +23,11 @@ const Products = () => {
   });
 
   useEffect(() => {
-    getStockData("products");
-    getStockData("brands");
-    getStockData("categories");
+    // getStockData("products");
+    // getStockData("brands");
+    // getStockData("categories");
+    getProCatBrand()
+
   }, []);
 
   return (

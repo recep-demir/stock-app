@@ -1,6 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, stockSuccess } from "../features/stockSlice";
+import {
+  fetchFail,
+  fetchStart,
+  getProCatBrandSuccess,
+  stockSuccess,
+} from "../features/stockSlice";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import useAxios from "./useAxios";
@@ -78,14 +83,13 @@ const useStockCall = () => {
     }
   };
 
-
   /* -------------------------------------------------------------------------- */
   /*                                  CREATE DATA                                  */
   /* -------------------------------------------------------------------------- */
-  const createStockData = async (url,info) => {
+  const createStockData = async (url, info) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.post(url,info);
+      const { data } = await axiosWithToken.post(url, info);
 
       console.log(data);
       getStockData(url);
@@ -97,24 +101,84 @@ const useStockCall = () => {
   /* -------------------------------------------------------------------------- */
   /*                                 UPDATE DATA                                */
   /* -------------------------------------------------------------------------- */
-const updateStockData=async(url,info)=>{
+  const updateStockData = async (url, info) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.put(`${url}/${info._id}`, info);
+      getStockData(url);
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
 
-  dispatch(fetchStart())
-  try {
+  /* -------------------------------------------------------------------------- */
+  // PROMISE ALL YAPILARI
+  //* eş zamanlı istek atma. aynı anda istek atılıyor aynı anda responselar gelmeye başlıyor. Zaman noktasında da avantajlı. En uzun hangi istek sürdüyse veriler ondan sonra valid olur. Birbirine bağımlı isteklerde en büyük avantajı hata durumu. İsteklerden biri bile hatalı olursa hepsi iptal olur.
 
-    const {data}=await axiosWithToken.put(`${url}/${info._id}`,info)
-    getStockData(url);
+  const getProCatBrand = async () => {
+    dispatch(fetchStart());
 
-  } catch (error) {
-    dispatch(fetchFail())
-  }
-}
+    try {
+      // const [a,b,c]=[2,4,6]  => Array destructure
 
+      const [products, categories, brands] = await Promise.all([
+        axiosWithToken("products"),
+        axiosWithToken("categories"),
+        axiosWithToken("brands"),
+      ]);
+      console.log(products,categories,brands);
+      dispatch(getProCatBrandSuccess([products?.data?.data,categories?.data?.data,brands?.data?.data]))
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
 
+  /* -------------------------------------------------------------------------- */
+  const getPurcBrandPro = async () => {
+    dispatch(fetchStart());
 
+    try {
+      // const [a,b,c]=[2,4,6]  => Array destructure
 
+      const [purchases, brands, products] = await Promise.all([
+        axiosWithToken("purchases"),
+        axiosWithToken("brands"),
+        axiosWithToken("products"),
+      ]);
+ 
+      dispatch(getProCatBrandSuccess([purchases?.data?.data,brands?.data?.data,products?.data?.data]))
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+/* -------------------------------------------------------------------------- */
+  const getSalesBrandPro = async () => {
+    dispatch(fetchStart());
 
-  return { getStockData, deleteStockData ,createStockData,updateStockData};
+    try {
+      // const [a,b,c]=[2,4,6]  => Array destructure
+
+      const [sales, brands, products] = await Promise.all([
+        axiosWithToken("sales"),
+        axiosWithToken("brands"),
+        axiosWithToken("products"),
+      ]);
+ 
+      dispatch(getProCatBrandSuccess([sales?.data?.data,brands?.data?.data,products?.data?.data]))
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
+  return {
+    getStockData,
+    deleteStockData,
+    createStockData,
+    updateStockData,
+    getProCatBrand,
+    getPurcBrandPro,
+    getSalesBrandPro
+  };
 };
 
 export default useStockCall;

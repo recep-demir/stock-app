@@ -7,11 +7,11 @@ const stockSlice = createSlice({
     error: false,
     token: null,
     firms: [],
-    brands:[],
-    products:[],
-    purchases:[],
-    sales:[],
-    categories:[]
+    brands: [],
+    products: [],
+    purchases: [],
+    sales: [],
+    categories: [],
   },
   reducers: {
     fetchStart: (state) => {
@@ -32,9 +32,36 @@ const stockSlice = createSlice({
       state.loading = false;
       state.error = false;
     },
+/* -------------------------------------------------------------------------- */
+// Promise all sonrası uygulamalar
+
+    getProCatBrandSuccess:(state, { payload }) => {
+      state.loading=false
+      console.log("payload", payload);
+      state.products=payload[0]
+      state.categories=payload[1]
+      state.brands=payload[2]
+    },
+    getPurcBrandProSuccess:(state, { payload }) => {
+      state.loading=false
+      console.log("payload", payload);
+      state.purchases=payload[0]
+      state.brands=payload[1]
+      state.products=payload[2]
+    },
+    getSalesBrandProSuccess:(state, { payload }) => {
+      state.loading=false
+      console.log("payload", payload);
+      state.sales=payload[0]
+      state.brands=payload[1]
+      state.products=payload[2]
+    },
+
+
   },
 });
 
-export const { fetchStart, fetchFail, stockSuccess } = stockSlice.actions;
+export const { fetchStart, fetchFail, stockSuccess,getSalesBrandProSuccess, getProCatBrandSuccess ,getPurcBrandProSuccess} =
+  stockSlice.actions;
 
 export default stockSlice.reducer;
