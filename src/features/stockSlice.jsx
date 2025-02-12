@@ -37,21 +37,20 @@ const stockSlice = createSlice({
 
     getProCatBrandSuccess:(state, { payload }) => {
       state.loading=false
-      console.log("payload", payload);
       state.products=payload[0]
       state.categories=payload[1]
       state.brands=payload[2]
     },
     getPurcBrandProSuccess:(state, { payload }) => {
       state.loading=false
-      console.log("payload", payload);
       state.purchases=payload[0]
       state.brands=payload[1]
       state.products=payload[2]
+      state.firms=payload[3]
     },
     getSalesBrandProSuccess:(state, { payload }) => {
       state.loading=false
-      console.log("payload", payload);
+      console.log("payload sales", payload);
       state.sales=payload[0]
       state.brands=payload[1]
       state.products=payload[2]
