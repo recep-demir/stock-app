@@ -4,6 +4,8 @@ import {
   fetchFail,
   fetchStart,
   getProCatBrandSuccess,
+  getPurcBrandProSuccess,
+  getSalesBrandProSuccess,
   stockSuccess,
 } from "../features/stockSlice";
 import axios from "axios";
@@ -126,8 +128,13 @@ const useStockCall = () => {
         axiosWithToken("categories"),
         axiosWithToken("brands"),
       ]);
-      console.log(products,categories,brands);
-      dispatch(getProCatBrandSuccess([products?.data?.data,categories?.data?.data,brands?.data?.data]))
+      dispatch(
+        getProCatBrandSuccess([
+          products?.data?.data,
+          categories?.data?.data,
+          brands?.data?.data,
+        ])
+      );
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -140,31 +147,39 @@ const useStockCall = () => {
     try {
       // const [a,b,c]=[2,4,6]  => Array destructure
 
-      const [purchases, brands, products] = await Promise.all([
+      const [purchases, brands, products,firms] = await Promise.all([
         axiosWithToken("purchases"),
         axiosWithToken("brands"),
         axiosWithToken("products"),
+        axiosWithToken("firms"),
       ]);
- 
-      dispatch(getProCatBrandSuccess([purchases?.data?.data,brands?.data?.data,products?.data?.data]))
+
+      dispatch(
+        getPurcBrandProSuccess([
+          purchases?.data?.data,
+          brands?.data?.data,
+          products?.data?.data,
+          firms?.data?.data,
+        ])
+      );
     } catch (error) {
       dispatch(fetchFail());
     }
   };
-/* -------------------------------------------------------------------------- */
+  /* -------------------------------------------------------------------------- */
   const getSalesBrandPro = async () => {
     dispatch(fetchStart());
 
     try {
-      // const [a,b,c]=[2,4,6]  => Array destructure
-
       const [sales, brands, products] = await Promise.all([
         axiosWithToken("sales"),
         axiosWithToken("brands"),
         axiosWithToken("products"),
       ]);
- 
-      dispatch(getProCatBrandSuccess([sales?.data?.data,brands?.data?.data,products?.data?.data]))
+
+      dispatch(
+        getSalesBrandProSuccess([sales?.data?.data, brands?.data?.data, products?.data?.data])
+      );
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -177,7 +192,7 @@ const useStockCall = () => {
     updateStockData,
     getProCatBrand,
     getPurcBrandPro,
-    getSalesBrandPro
+    getSalesBrandPro,
   };
 };
 
