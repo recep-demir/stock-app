@@ -20,7 +20,7 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({ open, handleClose ,initialState }) {
+export default function BrandModal({ open, handleClose ,initialState }) {
   const { createStockData ,updateStockData } = useStockCall();
   const [info, setInfo] = useState({
     name: "",
@@ -36,16 +36,17 @@ export default function FirmModal({ open, handleClose ,initialState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (info._id){
-      updateStockData("firms",info)
+      updateStockData("brands",info)
     }else{
 
-      createStockData("firms", info);
+      createStockData("brands", info);
     }
     handleClose()
   };
 
   useEffect(()=>{setInfo(initialState)},[initialState])
 
+  
   return (
     <div>
       <Modal
@@ -60,7 +61,7 @@ export default function FirmModal({ open, handleClose ,initialState }) {
             sx={{display:"flex", flexDirection:"column", gap:2}}
           >
             <TextField
-              label="Firm Name"
+              label="Brand Name"
               name="name"
               type="text"
               variant="outlined"
@@ -68,28 +69,9 @@ export default function FirmModal({ open, handleClose ,initialState }) {
               value={info.name}
               required
             />
+           
             <TextField
-              label="Firm Address"
-              name="address"
-              id="address"
-              type="text"
-              variant="outlined"
-              value={info.address}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              label="Firm Phone"
-              name="phone"
-              id="phone"
-              type="text"
-              variant="outlined"
-              value={info.phone}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              label="Firm Image"
+              label="Brand Image"
               name="image"
               id="image"
               type="url"

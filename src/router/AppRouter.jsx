@@ -7,10 +7,10 @@ import Dashboard from "../pages/Dashboard";
 
 import Brands from "../pages/Brands";
 import Purchases from "../pages/Purchases";
-import Sales from "../pages/Sales";
 import Products from "../pages/Products";
 import Home from "./../pages/Home";
 import Firms from "../pages/Firms";
+import Sales from './../pages/Sales';
 
 const AppRouter = () => {
   return (

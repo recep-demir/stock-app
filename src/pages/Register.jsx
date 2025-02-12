@@ -86,7 +86,7 @@ const Register = () => {
             }}
             validationSchema={SignupSchema}
             onSubmit={(values)=>{
-                console.log(values) 
+                
                 register(values)
             }}
 
