@@ -1,8 +1,11 @@
 import React from 'react'
+import KpiCard from './../components/KpiCard';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <KpiCard></KpiCard>
+    </div>
   )
 }
 

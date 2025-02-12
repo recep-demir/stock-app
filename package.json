@@ -17,6 +17,7 @@
     "@mui/system": "^5.15.14",
     "@mui/x-data-grid": "^7.26.0",
     "@reduxjs/toolkit": "^2.0.1",
+    "@tremor/react": "^3.18.7",
     "axios": "^1.6.2",
     "formik": "^2.4.6",
     "react": "^18.2.0",
