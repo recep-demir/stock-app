@@ -34,7 +34,7 @@ const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
 });
 
-export let persistor = persistStore(store)  // named export istediğimiz kadar bu şekilde çıkış yapılabilir, import ederken {} içinde alınır
+export let persistor = persistStore(store)  
 
 
-export default store;   // export default 1 tane olabilir
+export default store; 
