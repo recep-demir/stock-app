@@ -4,11 +4,11 @@
 This is a stock management system built using modern web technologies. It provides authentication, CRUD operations for stock items, and data visualization for businesses to efficiently manage their inventory.
 
 ## Live Demo
-A live demo of the project is available at: [Live Demo](<demo_url>)
+A live demo of the project is available at: [Live Demo](https://stock-app-react-mui.netlify.app/)
 
 ## Screenshots
-![Dashboard Screenshot](<screenshot_url>)
-![Stock Table Screenshot](<screenshot_url>)
+![Dashboard Screenshot](/public/image.png)
+![Stock Table Screenshot](/public/image%20copy.png)
 
 ## Technologies Used
 - **Frontend:** React, Redux Toolkit, React Router, Material-UI, Tailwind CSS
@@ -137,8 +137,7 @@ Contributions are welcome! If you'd like to contribute:
 3. Submit a pull request.
 
 ## Authors
-- **[Your Name]** - [GitHub Profile](<github_url>)
-- **Contributors:** List of contributors can be found [here](<contributors_url>).
+- **[Recep Demir]** - [GitHub Profile](https://github.com/recep-demir)
 
 ## License
 This project is open-source. Feel free to modify and distribute it as needed.
