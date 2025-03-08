@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { createStore } from 'redux'
 import authReducer from "../features/authSlice";
 import stockReducer from "../features/stockSlice"
 import { persistStore, persistReducer,REHYDRATE,FLUSH,
@@ -7,7 +6,7 @@ import { persistStore, persistReducer,REHYDRATE,FLUSH,
   PERSIST,
   PURGE,
   REGISTER,} from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage'
 
 
 const persistConfig = {
