@@ -6,9 +6,6 @@ import { useSelector } from "react-redux";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
-
-
 export default function KpiCard() {
   const { sales, purchases } = useSelector((state) => state.stock);
 
