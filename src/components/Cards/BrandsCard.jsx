@@ -37,7 +37,6 @@ export default function BrandCard({ _id, name, image ,setInitialState ,handleOpe
         title={name}
       />
     
-
       <CardActions sx={{ justifyContent: "center", gap: 2 }}>
         <EditIcon sx={btnStyle} onClick={()=>{setInitialState({_id,name,image});handleOpen()  }}  />
         <DeleteIcon sx={btnStyle}  onClick={()=>deleteStockData("brands",_id)}  />

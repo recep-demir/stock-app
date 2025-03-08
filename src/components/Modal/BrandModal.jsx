@@ -46,7 +46,6 @@ export default function BrandModal({ open, handleClose ,initialState }) {
 
   useEffect(()=>{setInfo(initialState)},[initialState])
 
-  
   return (
     <div>
       <Modal
